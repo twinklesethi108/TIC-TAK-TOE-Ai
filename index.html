@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tic-Tac-Toe AI</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <header>
+      <h1>Tic-Tac-Toe <span>AI</span></h1>
+      <p class="subtitle">Can you beat the machine?</p>
+    </header>
+
+    <div class="controls">
+      <div class="control-group">
+        <label>You play as</label>
+        <div class="toggle-group" id="sideToggle">
+          <button class="toggle-btn active" data-value="X">X <span class="first-tag">goes first</span></button>
+          <button class="toggle-btn" data-value="O">O</button>
+        </div>
+      </div>
+      <div class="control-group">
+        <label>Difficulty</label>
+        <div class="toggle-group" id="diffToggle">
+          <button class="toggle-btn" data-value="easy">Easy</button>
+          <button class="toggle-btn" data-value="medium">Medium</button>
+          <button class="toggle-btn active" data-value="hard">Unbeatable</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="scoreboard">
+      <div class="score-card" id="scoreYou">
+        <span class="score-label">You</span>
+        <span class="score-num" id="scorePlayerNum">0</span>
+      </div>
+      <div class="score-card draw">
+        <span class="score-label">Draw</span>
+        <span class="score-num" id="scoreDrawNum">0</span>
+      </div>
+      <div class="score-card" id="scoreAI">
+        <span class="score-label">AI</span>
+        <span class="score-num" id="scoreAINum">0</span>
+      </div>
+    </div>
+
+    <div class="status-bar" id="statusBar">
+      <span id="statusText">Your turn!</span>
+    </div>
+
+    <div class="board" id="board">
+      <div class="cell" data-index="0"></div>
+      <div class="cell" data-index="1"></div>
+      <div class="cell" data-index="2"></div>
+      <div class="cell" data-index="3"></div>
+      <div class="cell" data-index="4"></div>
+      <div class="cell" data-index="5"></div>
+      <div class="cell" data-index="6"></div>
+      <div class="cell" data-index="7"></div>
+      <div class="cell" data-index="8"></div>
+    </div>
+
+    <div class="actions">
+      <button class="btn-restart" id="restartBtn">New Game</button>
+      <button class="btn-reset" id="resetScoreBtn">Reset Score</button>
+    </div>
+
+    <div class="algo-info">
+      <details>
+        <summary>How does the AI work?</summary>
+        <div class="algo-body">
+          <p><strong>Minimax with Alpha-Beta Pruning</strong> — The AI explores every possible future game state as a tree. It assumes both players play optimally: it maximises its own score and minimises yours.</p>
+          <p><strong>Alpha-Beta Pruning</strong> cuts off branches of the tree that cannot possibly affect the final decision, making the search significantly faster without changing the result.</p>
+          <ul>
+            <li><strong>Easy</strong> — AI picks a random available cell</li>
+            <li><strong>Medium</strong> — Minimax limited to depth 3</li>
+            <li><strong>Unbeatable</strong> — Full Minimax + Alpha-Beta (depth 9)</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+  </div>
+
+  <div class="overlay" id="overlay">
+    <div class="result-card" id="resultCard">
+      <div class="result-icon" id="resultIcon"></div>
+      <div class="result-title" id="resultTitle"></div>
+      <div class="result-sub" id="resultSub"></div>
+      <button class="btn-restart" id="overlayBtn">Play Again</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
